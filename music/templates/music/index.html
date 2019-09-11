@@ -1,0 +1,15 @@
+<!--load the path to static-->
+{% extends 'music/base.html' %}
+{% block body %}
+<h1>MUSiC</h1>
+{% load static%}
+<link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}" />
+{% if all_albums %}
+    {% for album in all_albums %}
+    <!--<h1><li><a href="{% url 'detail' album.id %}"> {{album.album_title}}</a> </li></h1>-->
+    <button onclick="window.location.href='{% url 'detail' album.id %}'">{{album.album_title}}</button><br>
+    {% endfor %}
+{% else %}
+    <h1>You don't have any albums</h1>
+{% endif %}
+{% endblock %}
